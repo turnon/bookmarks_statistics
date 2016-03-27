@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){x
+document.addEventListener('DOMContentLoaded', function(){
   chrome.bookmarks.getTree(function(node){
     var hash = Object.create(null);
     
@@ -7,9 +7,7 @@ document.addEventListener('DOMContentLoaded', function(){x
       hash[node.title].push(node);
     }
     
-    var bookmarks = node[0].getDescendants().filter(function(node){
-      return node['children'] === undefined;
-    });
+    var bookmarks = node[0].getBookmarkDescendants();
     
     bookmarks.forEach(function(node){
       add(node);

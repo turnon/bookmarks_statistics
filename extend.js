@@ -13,15 +13,21 @@ node_proto.getAncestors = function(callback){
   get_parent_node(this.parentId);
 };
 
-node_proto.getDescendants = function(){
+node_proto.getDescendants = function(filter){
   var desc = [];
   if(this.children){
     this.children.forEach(function(c){
-      desc.push(c);
-      c.getDescendants().forEach(function(d){
+      filter ? (filter(c) && desc.push(c)) : desc.push(c) ;
+      c.getDescendants(filter).forEach(function(d){
         desc.push(d);
       });
     });
   }
   return desc;
+};
+
+node_proto.getBookmarkDescendants = function(){
+  return this.getDescendants(function(node){
+    return node['children'] === undefined;
+  });
 };
