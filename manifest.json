@@ -1,0 +1,13 @@
+{
+  "name": "check duplicated bookmarks",
+  "version": "10.1",
+  "description": "check duplicated bookmarks",
+  "permissions": [
+    "bookmarks"
+  ],
+  "browser_action": {
+      "default_title": "check duplicated bookmarks",
+      "default_popup": "popup.html"
+  },
+  "manifest_version": 2
+}
