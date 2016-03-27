@@ -1,9 +1,10 @@
 {
   "name": "check duplicated bookmarks",
-  "version": "10.1",
+  "version": "0.1",
   "description": "check duplicated bookmarks",
   "permissions": [
-    "bookmarks"
+    "bookmarks",
+    "tabs"
   ],
   "browser_action": {
       "default_title": "check duplicated bookmarks",
