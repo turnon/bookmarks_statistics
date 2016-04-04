@@ -1,3 +1,13 @@
+function setAncestors(node){
+  if(_.isUndefined(node.ancestors)) node.ancestors = [];
+  if(node.children){
+    _.each(node.children, function(c){
+      c.ancestors = _.union([node], node.ancestors);
+      setAncestors(c);
+    });
+  }
+};
+
 function getAncestors(node, callback){
   var ps = [];
   function get_parent_node(pid){
