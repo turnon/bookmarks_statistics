@@ -1,0 +1,10 @@
+<% _.each(dup, function(grp, title){ %>
+  <h3><%= title%></h3>
+  <ul>
+    <% _.each(grp, function(bm){ %>
+      <li>
+        <%= bm.ancestors.reverse().map(function(dir){return dir.title;}).join("/") %>
+      </li>
+    <% })%>
+  </ul>
+<% }); %>
