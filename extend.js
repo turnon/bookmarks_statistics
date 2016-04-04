@@ -24,8 +24,22 @@ function getDescendants(node, filter){
   return desc;
 };
 
+function isBookmark(node){
+  return node.children === undefined;
+};
+
+function hasBookmark(node){
+  return node.children && _.any(node.children, isBookmark);
+};
+
+function getBookmarks(node){
+  return _.filter(node.children, isBookmark);
+};
+
 function getBookmarkDescendants(node){
-  return getDescendants(node, function(node){
-    return node['children'] === undefined;
-  });
+  return getDescendants(node, isBookmark);
+};
+
+function getDirDescendants(node){
+  return getDescendants(node, hasBookmark);
 };

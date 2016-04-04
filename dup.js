@@ -1,4 +1,6 @@
-function renderBM(bookmarks){
+function renderBM(root){
+
+    var bookmarks = getBookmarkDescendants(root);
 
     var groupByTitle = _.groupBy(bookmarks, function(bm){return bm.title;});
 
