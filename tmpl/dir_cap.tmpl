@@ -1,0 +1,7 @@
+<ul>
+  <% _.each(dir_cap, function(dir){ %>
+    <li>
+      <%= dir.ancestors.reverse().map(function(dir){return dir.title;}).join("/") %>&nbsp;<%= dir.title %>&nbsp;<%= dir.children.length %>
+    </li>
+  <% })%>
+</ul>

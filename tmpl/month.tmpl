@@ -1,0 +1,10 @@
+<% _.each(month, function(m){ %>
+  <h4><%= m.month%>&nbsp;(<%= m.bookmarks.length%>)</h4>
+  <ul>
+    <% _.each(m.bookmarks, function(bm){ %>
+      <li>
+        <%= bm.title %>
+      </li>
+    <% })%>
+  </ul>
+<% }); %>
