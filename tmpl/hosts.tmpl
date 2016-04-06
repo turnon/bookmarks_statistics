@@ -1,0 +1,10 @@
+<% _.each(hosts, function(obj){ %>
+  <h4><%= obj.host%>(<%= obj.bookmarks.length%>)</h4>
+  <ul>
+    <% _.each(obj.bookmarks, function(bm){ %>
+      <li>
+        <%= bm.title %>
+      </li>
+    <% })%>
+  </ul>
+<% }); %>

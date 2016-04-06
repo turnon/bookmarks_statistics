@@ -28,6 +28,18 @@ function renderBM(){
                      function(obj){ return parseInt(obj.month);}
                    );
 
+     report.hosts = _.sortBy(
+                     _.map(
+                       _.groupBy(
+                         bookmarks,
+                         function(bm){return /\/\/(.*?)\//.exec(bm.url)[1];}
+                       ),
+                       function(grp, h){return {host: h, bookmarks : grp}}
+                     ),
+                     function(obj){ return obj.bookmarks.length;}
+                   ).reverse();
+
+
     var sub_report_names = _.keys(report);
 
     $.get("tmpl/sub.tmpl").then(function(tm){
