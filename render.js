@@ -1,4 +1,4 @@
-function renderBM(root){
+function renderBM(){
 
     var bookmarks = getBookmarkDescendants(root);
 
