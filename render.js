@@ -15,7 +15,7 @@ function renderBM(){
                    Object.create(null)
                  );
 
-    report.dir_cap = _.sortBy(dirs, function(d){return d.children.length;}).reverse();
+    report.dir_cap = _.sortBy(dirs, function(d){return getBookmarks(d).length;}).reverse();
     
     report.month = _.sortBy(
                      _.map(
@@ -42,7 +42,7 @@ function renderBM(){
 
     var sub_report_names = _.keys(report);
 
-    $.get("tmpl/sub.tmpl").then(function(tm){
+    $.get("tmpl/reports.tmpl").then(function(tm){
       $("#main").html(_.template(tm)({subs: sub_report_names}));
     });
 

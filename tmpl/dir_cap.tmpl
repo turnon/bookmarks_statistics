@@ -1,7 +1,12 @@
-<ul>
-  <% _.each(dir_cap, function(dir){ %>
+<% _.each(dir_cap, function(dir){ %>
+  <h4>
+    <%= dir.ancestors.reverse().map(function(dir){return dir.title;}).join("/") %>&nbsp;<%= dir.title %>(<%= dir.children.length %>)
+  </h4>
+  <ul>
+    <% _.each(getBookmarks(dir), function(c){%>
     <li>
-      <%= dir.ancestors.reverse().map(function(dir){return dir.title;}).join("/") %>&nbsp;<%= dir.title %>&nbsp;<%= dir.children.length %>
+      <%= c.title%>
     </li>
-  <% })%>
-</ul>
+    <% })%>
+  </ul>
+<% })%>

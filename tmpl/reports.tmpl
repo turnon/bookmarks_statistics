@@ -1,0 +1,14 @@
+<div id="tags" style="float:left;position:fixed;right:100px;top:0px">
+  <% _.each(subs, function(sub){ %>
+    <ul>
+      <li>
+        <a href="#<%= sub%>"><%= sub%></a>
+      </li>
+    </ul>
+  <% }); %>
+</div>
+<div id="reports">
+  <% _.each(subs, function(sub){ %>
+    <div id="<%= sub %>"></div>
+  <% }); %>
+</div>
