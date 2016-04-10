@@ -3,7 +3,9 @@
   <ul>
     <% _.each(m.bookmarks, function(bm){ %>
       <li>
-        <%= bm.title %>
+        <a target="_blank" href="<%= bm.url%>">
+          <%= bm.title %>
+        </a>
       </li>
     <% })%>
   </ul>

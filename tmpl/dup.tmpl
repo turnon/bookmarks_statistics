@@ -3,7 +3,9 @@
   <ul>
     <% _.each(grp, function(bm){ %>
       <li>
-        <%= bm.ancestors.reverse().map(function(dir){return dir.title;}).join("/") %>
+        <a target="_blank" href="<%= bm.url%>">
+          <%= getPath(bm).map(function(dir){return dir.title;}).join("/") %>
+        </a>
       </li>
     <% })%>
   </ul>

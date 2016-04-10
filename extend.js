@@ -21,6 +21,10 @@ function getAncestors(node, callback){
   get_parent_node(node.parentId);
 };
 
+function getPath(node){
+  return _.clone(node.ancestors).reverse()
+}
+
 function getDescendants(node, filter){
   var desc = [];
   if(node.children){
