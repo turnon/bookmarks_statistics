@@ -4,7 +4,7 @@ function getTreeAndRender(){
   chrome.bookmarks.getTree(function(node){
     root = node[0];
     setAncestors(root);
-    renderBM();
+    render(compute(root));
   });
 }
 
