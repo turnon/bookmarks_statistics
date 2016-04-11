@@ -1,6 +1,6 @@
 function render(report){
 
-    var sub_report_names = _.keys(report);
+    var sub_report_names = _.pluck(report, 'name');
 
     $.get("tmpl/reports.tmpl").then(function(tm){
       $("#main").html(_.template(tm)({subs: sub_report_names}));

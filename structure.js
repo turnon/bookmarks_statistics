@@ -4,13 +4,19 @@ function getTreeAndRender(){
   chrome.bookmarks.getTree(function(node){
     root = node[0];
     setAncestors(root);
-    render(compute(root));
+    render(compute(root,reports));
   });
 }
 
-document.addEventListener('DOMContentLoaded', getTreeAndRender);
+google.charts.load("current", {packages:["corechart"]});
 
-_.each(
-  ['onCreated', 'onRemoved', 'onChanged', 'onMoved', 'onChildrenReordered', 'onImportEnded'],
-  function(event){chrome.bookmarks[event].addListener(getTreeAndRender);}
-);
+google.charts.setOnLoadCallback(function(){
+
+    $(getTreeAndRender);
+
+    _.each(
+      ['onCreated', 'onRemoved', 'onChanged', 'onMoved', 'onChildrenReordered', 'onImportEnded'],
+      function(event){chrome.bookmarks[event].addListener(getTreeAndRender);}
+    );
+
+});

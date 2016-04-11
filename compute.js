@@ -1,44 +1,25 @@
-function compute(root){
+function compute(root, reports){
 
     var bookmarks = getBookmarkDescendants(root);
 
-    var dirs = getDirDescendants(root);
+    rpts = _.map(reports(), function(rp){
 
-    var report = Object.create(null);
+      var result = _.groupBy(bookmarks, rp.method);
 
-    report.dup = _.reduce(
-                   _.groupBy(
-                     bookmarks,
-                     function(bm){return bm.title;}
-                   ),
-                   function(dup, grp, title){if(grp.length > 1) dup[title] = grp;return dup;},
-                   Object.create(null)
-                 );
+      if(rp.filter){
+        result = _.reduce(result, function(rs, group, key){
+          if(rp.filter(group, key)) rs[key] = group;
+          return rs;
+        }, {});
+      }
 
-    report.dir_cap = _.sortBy(dirs, function(d){return getBookmarks(d).length;}).reverse();
-    
-    report.month = _.sortBy(
-                     _.map(
-                       _.groupBy(
-                         bookmarks,
-                         function(bm){return dut.cd2yymm(bm.dateAdded);}
-                       ),
-                       function(grp, m){return {month: m, bookmarks : grp}}
-                     ),
-                     function(obj){ return parseInt(obj.month);}
-                   );
+      return {
+                name: rp.name,
+                display: rp.display,
+                data: result
+              };
+    });
 
-     report.hosts = _.sortBy(
-                     _.map(
-                       _.groupBy(
-                         bookmarks,
-                         function(bm){return /\/\/(.*?)\//.exec(bm.url)[1];}
-                       ),
-                       function(grp, h){return {host: h, bookmarks : grp}}
-                     ),
-                     function(obj){ return obj.bookmarks.length;}
-                   ).reverse();
-
-    return report;
+    return rpts;
 
 }
