@@ -1,6 +1,6 @@
-(function(win, u){
+define(function(win, u){
 
-  win.dut = u;
+  var u = {};
 
   function padZero(number) {  
     return (number < 10 ? "0" + number : number);
@@ -30,4 +30,6 @@
     return chromeDateFormater(number, u.yy, u.mm);
   };
 
-})(window, Object.create(null));
+  return u;
+
+});

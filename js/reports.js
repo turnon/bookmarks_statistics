@@ -1,4 +1,4 @@
-function reports(){
+define(["date_utils"], function(dut){
   return [
     { 
       name : "duplicate links",
@@ -22,4 +22,4 @@ function reports(){
       method : function(bm){return /\/\/(.*?)\//.exec(bm.url)[1];}
     },
   ];
-}
+});
