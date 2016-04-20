@@ -1,7 +1,8 @@
 <ul>
   <% _.each(report, function(detail, item){ %>
      <li>
-       <%= item%> (<%= detail.length%>)
+       <div class="item"><%= item%></div>
+       <div> (<%= detail.length%>)</div>
      </li>
   <% }); %>
 </ul>

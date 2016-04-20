@@ -1,8 +1,12 @@
-define(["underscore", "jquery", "extend-report"], function(_, $, rp_utl){
+define(["underscore", "jquery", "extend-report", "showDetail"], function(_, $, rp_utl, detail){
 
   function text(report){
     $.get("tmpl/text.tmpl").then(function(tm){
-      $("#" + rp_utl.htmlId(report)).html(_.template(tm)({report : report.data}));
+      $("#" + rp_utl.htmlId(report))
+        .html(_.template(tm)({report : report.data}))
+        .on("click", ".item", function(e){
+          detail(report, e.target.innerText);
+        });
     });
   }
 
@@ -33,7 +37,7 @@ define(["underscore", "jquery", "extend-report"], function(_, $, rp_utl){
 
     function selectHandler(e) {
       var selected = chart.getSelection()[0];
-      console.log(selected.row, report.data[org_data[selected.row + 1][0]]);
+      detail(report, org_data[selected.row + 1][0]);
     }
   }
 

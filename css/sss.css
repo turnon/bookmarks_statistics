@@ -1,0 +1,11 @@
+ul div {
+  display: inline;
+}
+
+.item {
+  cursor: pointer;
+}
+
+.item:hover {
+  text-decoration: underline;
+}
