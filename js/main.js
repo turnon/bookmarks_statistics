@@ -1,12 +1,11 @@
 require.config({
 　　shim: {
-　　　　'underscore':{
-　　　　　　exports: '_'
-　　　　}
+　　　　'underscore': {exports: '_'}
 　　},
     baseUrl: "js",
 　　paths: {
 　　　　"jquery": "lib/jquery-2.2.2.min",
+        "modal": "lib/simple-popup.min",
 　　　　"underscore": "lib/underscore-min"
 　　}
 });
