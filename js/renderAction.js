@@ -1,4 +1,4 @@
-define(["underscore", "jquery", "extend-report", "showDetail"], function(_, $, rp_utl, detail){
+define(["underscore", "jquery", "extend-report", "showDetail", "loadGoogleChart"], function(_, $, rp_utl, detail, loadGoogleChart){
 
   function text(report){
     $.get("tmpl/text.tmpl").then(function(tm){
@@ -11,6 +11,12 @@ define(["underscore", "jquery", "extend-report", "showDetail"], function(_, $, r
   }
 
   function google_chart(report){
+    loadGoogleChart.then(function(){
+      _g_chart(report);
+    });
+  }
+
+  function _g_chart(report){
 
     var count = _.sortBy(
       _.map(report.data, function(group, key){

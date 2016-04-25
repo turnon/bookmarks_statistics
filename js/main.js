@@ -12,19 +12,13 @@ require.config({
 
 var root;
 
-require(['jquery', 'underscore', "getTree", "https://www.gstatic.com/charts/loader.js"], function ($, _, getTreeAndRender){
+require(['jquery', 'underscore', "getTree"], function ($, _, getTreeAndRender){
 
-  google.charts.load("current", {packages:["corechart"]});
+  $(getTreeAndRender);
 
-  google.charts.setOnLoadCallback(function(){
-
-      $(getTreeAndRender);
-
-      _.each(
-        ['onCreated', 'onRemoved', 'onChanged', 'onMoved', 'onChildrenReordered', 'onImportEnded'],
-        function(event){chrome.bookmarks[event].addListener(getTreeAndRender);}
-      );
-
-  });
+  _.each(
+    ['onCreated', 'onRemoved', 'onChanged', 'onMoved', 'onChildrenReordered', 'onImportEnded'],
+    function(event){chrome.bookmarks[event].addListener(getTreeAndRender);}
+  );
 
 });
